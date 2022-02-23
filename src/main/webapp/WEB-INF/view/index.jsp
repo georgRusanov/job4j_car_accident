@@ -21,11 +21,22 @@
 </head>
 <body>
 <div>
-    <ul>
-        <c:forEach var="user" items="${users}">
-            <li><c:out value="${user}" /></li>
-        </c:forEach>
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="accident" items="${accidents}">
+                <tr>
+                    <th scope="row"><c:out value="${accident.key}" /></th>
+                    <td><c:out value="${accident.value.name}" /></td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
