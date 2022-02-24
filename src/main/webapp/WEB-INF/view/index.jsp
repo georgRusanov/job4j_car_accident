@@ -31,8 +31,8 @@
         <tbody>
             <c:forEach var="accident" items="${accidents}">
                 <tr>
-                    <th scope="row"><c:out value="${accident.key}" /></th>
-                    <td><c:out value="${accident.value.name}" /></td>
+                    <th scope="row"><c:out value="${accident.id}" /></th>
+                    <td><c:out value="${accident.name}" /></td>
                 </tr>
             </c:forEach>
         </tbody>
