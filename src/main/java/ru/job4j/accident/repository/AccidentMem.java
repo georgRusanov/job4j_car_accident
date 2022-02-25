@@ -20,4 +20,8 @@ public class AccidentMem {
     public List<Accident> getAccidents() {
         return new ArrayList<>(accidents.values());
     }
+
+    public void create(Accident accident) {
+        accidents.put(accident.getId(), accident);
+    }
 }

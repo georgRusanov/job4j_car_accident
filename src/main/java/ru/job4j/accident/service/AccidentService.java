@@ -17,4 +17,8 @@ public class AccidentService {
     public List<Accident> getAccidents() {
         return new ArrayList<>(accidentMem.getAccidents());
     }
+
+    public void create(Accident accident) {
+        accidentMem.create(accident);
+    }
 }
