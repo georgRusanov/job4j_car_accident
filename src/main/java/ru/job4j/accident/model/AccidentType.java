@@ -17,13 +17,6 @@ public class AccidentType {
         return type;
     }
 
-    public static AccidentType of(int id) {
-        AccidentType type = new AccidentType();
-        type.id = id;
-        type.name = "Without name";
-        return type;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
