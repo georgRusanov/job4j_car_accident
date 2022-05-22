@@ -15,8 +15,8 @@ public class AccidentMem {
     private final AtomicInteger key = new AtomicInteger(0);
 
     public AccidentMem() {
-        Accident accident1 = Accident.builder().id(key.getAndIncrement()).name("first").build();
-        Accident accident2 = Accident.builder().id(key.getAndIncrement()).name("second").build();
+        Accident accident1 = new Accident(key.getAndIncrement(), "first");
+        Accident accident2 = new Accident(key.getAndIncrement(), "second");
         accidents.put(accident1.getId(), accident1);
         accidents.put(accident2.getId(), accident2);
 
@@ -34,7 +34,9 @@ public class AccidentMem {
     }
 
     public void create(Accident accident) {
-        accidents.put(key.getAndIncrement(), accident);
+        accident.setId(key.getAndIncrement());
+        accident.setType(accidentTypes.get(accident.getId()));
+        accidents.put(accident.getId(), accident);
     }
 
     public Accident findById(int id) {
