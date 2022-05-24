@@ -36,6 +36,11 @@
                 <tr>
                     <th scope="row"><c:out value="${accident.id}" /></th>
                     <td><c:out value="${accident.name}" /></td>
+                    <td>
+                        <c:forEach var="rule" items="${accident.rules}">
+                            <c:out value="${rule.name}; " />
+                        </c:forEach>
+                    </td>
                     <td><a href="<c:url value='/update?id=${accident.id}'/>">Изменить инцидент</a></td>
                 </tr>
             </c:forEach>

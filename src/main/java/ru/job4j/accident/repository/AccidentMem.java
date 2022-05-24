@@ -7,11 +7,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
+import ru.job4j.accident.model.Rule;
 
 @Repository
 public class AccidentMem {
     private final HashMap<Integer, Accident> accidents = new HashMap<>();
     private final HashMap<Integer, AccidentType> accidentTypes = new HashMap<>();
+    private final HashMap<Integer, Rule> rules = new HashMap<>();
     private final AtomicInteger key = new AtomicInteger(0);
 
     public AccidentMem() {
@@ -23,6 +25,10 @@ public class AccidentMem {
         accidentTypes.put(1, AccidentType.of(1,"Две машины"));
         accidentTypes.put(2, AccidentType.of(2, "Машина и человек"));
         accidentTypes.put(3, AccidentType.of(3, "Машина и велосипед"));
+
+        rules.put(1, Rule.of(1, "Статья. 1"));
+        rules.put(2, Rule.of(2, "Статья. 2"));
+        rules.put(3, Rule.of(3, "Статья. 3"));
     }
 
     public List<Accident> getAccidents() {
@@ -31,6 +37,14 @@ public class AccidentMem {
 
     public List<AccidentType> getAccidentTypes() {
         return new ArrayList<>(accidentTypes.values());
+    }
+
+    public List<Rule> getRules() {
+        return new ArrayList<>(rules.values());
+    }
+
+    public Rule getRuleById(int id) {
+        return rules.get(id);
     }
 
     public void create(Accident accident) {

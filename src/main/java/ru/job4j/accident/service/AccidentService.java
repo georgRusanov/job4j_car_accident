@@ -1,9 +1,12 @@
 package ru.job4j.accident.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.model.AccidentType;
+import ru.job4j.accident.model.Rule;
 import ru.job4j.accident.repository.AccidentMem;
 
 @Service
@@ -22,7 +25,15 @@ public class AccidentService {
         return accidentMem.getAccidentTypes();
     }
 
-    public void create(Accident accident) {
+    public List<Rule> getRules() {
+        return accidentMem.getRules();
+    }
+
+    public void create(Accident accident, String[] ids) {
+        accident.setRules(new HashSet<>());
+        if (ids != null) {
+            Arrays.stream(ids).forEach(id -> accident.getRules().add(accidentMem.getRuleById(Integer.parseInt(id))));
+        }
         accidentMem.create(accident);
     }
 
